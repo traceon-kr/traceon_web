@@ -1,11 +1,675 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
-    <title>Vercel 무료 배포 테스트</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TraceOn | AI Hardware & Software Synthesis</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#0B132B',
+                        brandCard: '#111D42',
+                        brandCardBorder: '#1C2E60',
+                        brandBlue: '#00A3FF',
+                        brandCyan: '#00F0FF'
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        body {
+            background-color: #0B132B;
+            color: #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+    </style>
 </head>
-<body>
-    <h1>안녕하세요! Vercel 배포에 성공했습니다. 🎉</h1>
-    <p>dev@traceon.kr 계정으로 연동된 첫 페이지입니다.</p>
+
+<body
+    class="bg-brandDark text-slate-200 antialiased selection:bg-brandBlue selection:text-white flex flex-col min-h-screen">
+
+    <header class="sticky top-0 z-50 bg-brandDark/90 backdrop-blur-md border-b border-brandCardBorder/80">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#overview" class="flex items-center gap-3 group">
+                <div
+                    class="w-10 h-10 rounded-lg bg-gradient-to-br from-brandBlue to-brandCyan flex items-center justify-center text-brandDark font-extrabold text-xl shadow-lg shadow-brandBlue/20">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+                <span
+                    class="text-2xl font-bold tracking-tight text-white group-hover:text-brandCyan transition-colors">TraceOn</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#overview" class="hover:text-brandCyan transition-colors" data-i18n="navHome">Home</a>
+                <a href="#hardware" class="hover:text-brandCyan transition-colors" data-i18n="navHardware">Hardware</a>
+                <a href="#software" class="hover:text-brandCyan transition-colors" data-i18n="navSoftware">Software</a>
+                <a href="#maintenance" class="hover:text-brandCyan transition-colors"
+                    data-i18n="navMaintenance">Maintenance</a>
+                <a href="#contact" class="hover:text-brandCyan transition-colors" data-i18n="navContact">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button id="langToggle" type="button"
+                    class="px-3 py-1.5 rounded-lg border border-brandCardBorder bg-brandCard/60 text-xs font-semibold text-brandCyan hover:border-brandCyan/50 transition-colors flex items-center gap-1.5 cursor-pointer">
+                    <i class="fa-solid fa-globe"></i>
+                    <span id="langDisplay">KR</span>
+                </button>
+
+                <a href="#contact"
+                    class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-brandBlue to-brandCyan text-brandDark font-semibold text-sm shadow-md hover:brightness-110 transition-all">
+                    <span data-i18n="navGetStarted">Get Started</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <section id="overview"
+            class="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden border-b border-brandCardBorder/40">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+                    <div class="lg:col-span-7 space-y-8">
+                        <div
+                            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-brandCyan/30 bg-brandCyan/10 text-brandCyan text-xs tracking-wider uppercase font-semibold">
+                            <span class="w-2 h-2 rounded-full bg-brandCyan animate-pulse"></span>
+                            <span data-i18n="heroBadge">Next-Generation Engineering Platform</span>
+                        </div>
+
+                        <h1
+                            class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
+                            <span data-i18n="heroTitlePrefix">Accelerated Hardware Synthesis:</span>
+                            <br>
+                            <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-brandCyan via-brandBlue to-indigo-400"
+                                data-i18n="heroTitleHighlight">From Silicon to Screen.</span>
+                        </h1>
+
+                        <p class="text-lg sm:text-xl text-slate-300 max-w-2xl font-normal leading-relaxed"
+                            data-i18n="heroSubtitle">
+                            TraceOn automates hardware design while instantly generating matching control interfaces.
+                            Turn specs into functional prototypes in minutes.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                            <a href="#contact"
+                                class="inline-flex justify-center items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-brandBlue to-brandCyan text-brandDark font-bold text-base shadow-lg shadow-brandBlue/25 hover:brightness-110 transition-all">
+                                <span data-i18n="heroPrimaryCta">Deploy Now</span>
+                                <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </a>
+                            <a href="#hardware"
+                                class="inline-flex justify-center items-center gap-2 px-8 py-4 rounded-xl border border-brandCardBorder bg-brandCard/40 text-slate-200 font-semibold text-base hover:bg-brandCard hover:border-brandCyan/40 transition-all">
+                                <span data-i18n="heroSecondaryCta">Explore Platform</span>
+                                <i class="fa-solid fa-layer-group text-slate-400"></i>
+                            </a>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-6 pt-6 border-t border-brandCardBorder/60 max-w-lg">
+                            <div>
+                                <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">85%</div>
+                                <div class="text-xs text-slate-400 mt-1 uppercase font-medium" data-i18n="metricCycle">
+                                    Cycle Reduction</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">100%</div>
+                                <div class="text-xs text-slate-400 mt-1 uppercase font-medium" data-i18n="metricSynced">
+                                    HW-SW Co-design</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Zero</div>
+                                <div class="text-xs text-slate-400 mt-1 uppercase font-medium"
+                                    data-i18n="metricFriction">Manual Parsing</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 relative">
+                        <div
+                            class="relative rounded-2xl overflow-hidden border border-brandCardBorder bg-brandCard/60 shadow-2xl shadow-cyan-950/40 group">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+                                alt="Hardware Architecture Automation"
+                                class="w-full h-[460px] object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-90">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-brandDark via-transparent to-transparent">
+                            </div>
+
+                            <div
+                                class="absolute bottom-6 left-6 right-6 p-4 rounded-xl backdrop-blur-md bg-brandDark/80 border border-brandCardBorder/80">
+                                <div class="flex items-center justify-between text-xs text-slate-400 font-mono mb-2">
+                                    <span class="flex items-center gap-1.5 text-brandCyan">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-brandCyan animate-ping"></span>
+                                        CORE PLATFORM ACTIVE
+                                    </span>
+                                    <span>Automated Output</span>
+                                </div>
+                                <p class="text-sm font-semibold text-white truncate" data-i18n="heroImageCard">Automated
+                                    Hardware & Firmware Co-Synthesis</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="hardware" class="py-24 border-b border-brandCardBorder/40">
+            <div class="max-w-7xl mx-auto px-6">
+
+                <div class="max-w-3xl mb-16">
+                    <div class="text-brandCyan text-xs font-semibold uppercase tracking-wider mb-2"
+                        data-i18n="hwSubhead">Design Acceleration</div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight" data-i18n="hwTitle">
+                        User-Friendly Hardware Design</h2>
+                    <p class="text-slate-300 mt-4 text-lg font-normal" data-i18n="hwDesc">
+                        Eliminate tedious datasheet review. TraceOn delivers verified reference architectures, automated
+                        pin allocation, and instant layout guidelines to streamline hardware prototyping.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+
+                    <div
+                        class="rounded-xl border border-brandCardBorder bg-brandCard/40 p-8 hover:border-brandCyan/40 transition-all hover:-translate-y-1">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-brandBlue/10 border border-brandBlue/30 text-brandCyan flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-bolt-lightning"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3" data-i18n="hwCard1Title">Smart Specification
+                            Caching</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed font-normal" data-i18n="hwCard1Desc">
+                            Access pre-indexed component specifications instantly, allowing rapid circuit synthesis
+                            without manual lookup delays.
+                        </p>
+                    </div>
+
+                    <div
+                        class="rounded-xl border border-brandCardBorder bg-brandCard/40 p-8 hover:border-brandCyan/40 transition-all hover:-translate-y-1">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-brandBlue/10 border border-brandBlue/30 text-brandCyan flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-diagram-project"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3" data-i18n="hwCard2Title">Standard Reference
+                            Blueprints</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed font-normal" data-i18n="hwCard2Desc">
+                            Deploy battle-tested schematics and routing guides tailored to meet target power, signal
+                            integrity, and thermal standards.
+                        </p>
+                    </div>
+
+                    <div
+                        class="rounded-xl border border-brandCardBorder bg-brandCard/40 p-8 hover:border-brandCyan/40 transition-all hover:-translate-y-1">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-brandBlue/10 border border-brandBlue/30 text-brandCyan flex items-center justify-center text-xl mb-6">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3" data-i18n="hwCard3Title">Automated Rule
+                            Verification</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed font-normal" data-i18n="hwCard3Desc">
+                            Real-time electrical validation catches pin conflicts, voltage mismatches, and layout
+                            anomalies before manufacturing.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="software" class="py-24 border-b border-brandCardBorder/40 bg-brandDark">
+            <div class="max-w-7xl mx-auto px-6">
+
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+                    <div class="lg:col-span-6 relative order-2 lg:order-1">
+                        <div
+                            class="rounded-2xl overflow-hidden border border-brandCardBorder bg-brandCard/60 shadow-xl group">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+                                alt="Modern Drag and Drop Control Dashboard"
+                                class="w-full h-[420px] object-cover group-hover:scale-105 transition-transform duration-700 opacity-85">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-brandDark/80 via-transparent to-transparent">
+                            </div>
+
+                            <div
+                                class="absolute top-4 right-4 px-3 py-1.5 rounded bg-brandDark/90 border border-brandCyan/40 text-brandCyan text-xs font-mono">
+                                Drag & Drop Interface Engine
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6 space-y-6 order-1 lg:order-2">
+                        <div class="text-brandCyan text-xs font-semibold uppercase tracking-wider"
+                            data-i18n="swSubhead">Interactive Interface Design</div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight" data-i18n="swTitle">
+                            Visual Control Interface</h2>
+                        <p class="text-slate-300 text-lg font-normal leading-relaxed" data-i18n="swDesc">
+                            Bypass repetitive frontend setup. TraceOn generates clean, customizable Web and Mobile
+                            control interfaces paired directly to your hardware layout.
+                        </p>
+
+                        <div class="space-y-4 pt-2">
+
+                            <div
+                                class="flex items-start gap-4 p-4 rounded-xl border border-brandCardBorder bg-brandCard/30">
+                                <div
+                                    class="w-10 h-10 rounded bg-brandBlue/20 text-brandCyan flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-shapes"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-base font-bold text-white" data-i18n="swFeature1Title">Drag-and-Drop
+                                        Layout Editor</h4>
+                                    <p class="text-sm text-slate-300 font-normal mt-1" data-i18n="swFeature1Desc">
+                                        Customize telemetry dashboards, toggles, and charts visually. Components connect
+                                        directly to device registers.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex items-start gap-4 p-4 rounded-xl border border-brandCardBorder bg-brandCard/30">
+                                <div
+                                    class="w-10 h-10 rounded bg-brandBlue/20 text-brandCyan flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-base font-bold text-white" data-i18n="swFeature2Title">Automated
+                                        Driver Synthesis</h4>
+                                    <p class="text-sm text-slate-300 font-normal mt-1" data-i18n="swFeature2Desc">
+                                        Instantly compile ready-to-run embedded firmware and client libraries matched to
+                                        your chosen interface pins.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="maintenance" class="py-24 border-b border-brandCardBorder/40">
+            <div class="max-w-7xl mx-auto px-6">
+
+                <div class="max-w-3xl mb-16">
+                    <div class="text-brandCyan text-xs font-semibold uppercase tracking-wider mb-2"
+                        data-i18n="maintSubhead">Ecosystem Synchronization</div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight" data-i18n="maintTitle">
+                        Live Design Intelligence via MCP</h2>
+                    <p class="text-slate-300 mt-4 text-lg font-normal" data-i18n="maintDesc">
+                        Stay ahead of supply chain volatility. TraceOn uses Model Context Protocol (MCP) servers to
+                        continuously refresh component pricing, availability, and design recommendations.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+
+                    <div class="rounded-xl border border-brandCardBorder bg-brandCard/40 p-8 space-y-4">
+                        <div class="text-brandCyan text-2xl"><i class="fa-solid fa-cubes-stacked"></i></div>
+                        <h3 class="text-xl font-bold text-white" data-i18n="maintCol1Title">Live Component Tracking</h3>
+                        <p class="text-sm text-slate-300 font-normal leading-relaxed" data-i18n="maintCol1Desc">
+                            Synchronize directly with global inventory channels to monitor stock, lifecycle status, and
+                            price revisions.
+                        </p>
+                        <ul class="text-xs text-slate-400 space-y-2 pt-2 border-t border-brandCardBorder/60">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandCyan"></i>
+                                Pin-compatible replacement checks</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandCyan"></i>
+                                Proactive obsolescence warnings</li>
+                        </ul>
+                    </div>
+
+                    <div class="rounded-xl border border-brandCardBorder bg-brandCard/40 p-8 space-y-4">
+                        <div class="text-brandCyan text-2xl"><i class="fa-solid fa-arrows-rotate"></i></div>
+                        <h3 class="text-xl font-bold text-white" data-i18n="maintCol2Title">Up-to-Date Guidelines</h3>
+                        <p class="text-sm text-slate-300 font-normal leading-relaxed" data-i18n="maintCol2Desc">
+                            Absorb manufacturer revisions and errata automatically, keeping reference blueprints aligned
+                            with latest silicon data.
+                        </p>
+                        <ul class="text-xs text-slate-400 space-y-2 pt-2 border-t border-brandCardBorder/60">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandCyan"></i>
+                                Automated errata sheet digestion</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandCyan"></i>
+                                Continuous schematic updates</li>
+                        </ul>
+                    </div>
+
+                    <div class="rounded-xl border border-brandCardBorder bg-brandCard/40 p-8 space-y-4">
+                        <div class="text-brandCyan text-2xl"><i class="fa-solid fa-network-wired"></i></div>
+                        <h3 class="text-xl font-bold text-white" data-i18n="maintCol3Title">Flexible Custom Connectors
+                        </h3>
+                        <p class="text-sm text-slate-300 font-normal leading-relaxed" data-i18n="maintCol3Desc">
+                            Connect private parts libraries and custom design rules directly to your workspace using
+                            open protocol connectors.
+                        </p>
+                        <ul class="text-xs text-slate-400 space-y-2 pt-2 border-t border-brandCardBorder/60">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandCyan"></i> Secure
+                                internal repository sync</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandCyan"></i> Private
+                                organization access control</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="py-24">
+            <div class="max-w-4xl mx-auto px-6">
+
+                <div class="text-center mb-12">
+                    <div class="text-brandCyan text-xs font-semibold uppercase tracking-wider mb-2"
+                        data-i18n="contactBadge">Get In Touch</div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight" data-i18n="contactTitle">
+                        Build Your Blueprint</h2>
+                    <p class="text-slate-300 mt-3 text-base sm:text-lg font-normal max-w-xl mx-auto"
+                        data-i18n="contactDesc">
+                        Share your project requirements to review TraceOn hardware guides and customized control
+                        software.
+                    </p>
+                </div>
+
+                <div
+                    class="rounded-2xl border border-brandCardBorder bg-brandCard/50 p-8 sm:p-12 shadow-2xl backdrop-blur-sm">
+                    <form id="contactForm" action="https://formspree.io/f/moejdooq" method="POST" class="space-y-6">
+
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="full-name" class="block text-sm font-semibold text-slate-200 mb-2"
+                                    data-i18n="formNameLabel">Full Name</label>
+                                <input type="text" id="full-name" name="name" required
+                                    class="w-full px-4 py-3 rounded-lg bg-brandDark/80 border border-brandCardBorder focus:border-brandCyan focus:ring-1 focus:ring-brandCyan text-white placeholder-slate-500 text-sm outline-none transition-colors"
+                                    placeholder="e.g. Dr. Alex Vance">
+                            </div>
+                            <div>
+                                <label for="work-email" class="block text-sm font-semibold text-slate-200 mb-2"
+                                    data-i18n="formEmailLabel">Work Email</label>
+                                <input type="email" id="work-email" name="email" required
+                                    class="w-full px-4 py-3 rounded-lg bg-brandDark/80 border border-brandCardBorder focus:border-brandCyan focus:ring-1 focus:ring-brandCyan text-white placeholder-slate-500 text-sm outline-none transition-colors"
+                                    placeholder="alex@enterprise.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="requirements" class="block text-sm font-semibold text-slate-200 mb-2"
+                                data-i18n="formReqLabel">Hardware & Interface Requirements</label>
+                            <textarea id="requirements" name="requirements" rows="4" required
+                                class="w-full px-4 py-3 rounded-lg bg-brandDark/80 border border-brandCardBorder focus:border-brandCyan focus:ring-1 focus:ring-brandCyan text-white placeholder-slate-500 text-sm outline-none transition-colors resize-none"
+                                placeholder="Target MCUs (e.g., STM32, ESP32), required sensors, dashboard preferences, or specific constraints."></textarea>
+                        </div>
+
+                        <button type="submit" id="submitBtn"
+                            class="w-full py-4 rounded-xl bg-gradient-to-r from-brandBlue to-brandCyan text-brandDark font-bold text-base shadow-lg shadow-brandBlue/25 hover:brightness-110 transition-all cursor-pointer flex items-center justify-center gap-2">
+                            <span id="submitBtnText" data-i18n="formSubmit">Submit Requirements for Review</span>
+                            <i id="submitSpinner" class="fa-solid fa-circle-notch fa-spin hidden"></i>
+                        </button>
+
+                        <div class="flex items-center justify-center gap-2 text-xs text-slate-400 mt-4">
+                            <i class="fa-solid fa-lock text-brandCyan"></i>
+                            <span data-i18n="formSecurityNote">Encrypted data transmission. Confidentiality strictly
+                                enforced.</span>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-brandCardBorder/80 bg-brandDark/90 py-10">
+        <div class="max-w-7xl mx-auto px-6 text-center space-y-4">
+            <div class="inline-flex items-center gap-2">
+                <div
+                    class="w-7 h-7 rounded bg-brandBlue text-brandDark flex items-center justify-center font-bold text-xs">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+                <span class="text-white font-bold tracking-tight text-base">TraceOn</span>
+                <span class="text-slate-600">|</span>
+                <a href="https://traceon.kr"
+                    class="text-slate-400 hover:text-brandCyan text-sm transition-colors">traceon.kr</a>
+            </div>
+
+            <div class="flex justify-center items-center gap-6 text-xs text-slate-400">
+                <a href="#overview" class="hover:text-slate-200 transition-colors" data-i18n="navHome">Home</a>
+                <a href="#hardware" class="hover:text-slate-200 transition-colors" data-i18n="navHardware">Hardware</a>
+                <a href="#software" class="hover:text-slate-200 transition-colors" data-i18n="navSoftware">Software</a>
+                <a href="#maintenance" class="hover:text-slate-200 transition-colors"
+                    data-i18n="navMaintenance">Maintenance</a>
+                <a href="#contact" class="hover:text-slate-200 transition-colors" data-i18n="navContact">Contact</a>
+            </div>
+
+            <p class="text-xs text-slate-500">
+                &copy; 2026 TraceOn Inc. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <div id="successModal"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 hidden">
+        <div id="modalBox"
+            class="w-full max-w-md rounded-2xl border border-brandCardBorder bg-brandCard p-8 shadow-2xl relative text-left">
+            <button id="modalCloseBtn" type="button"
+                class="absolute top-5 right-5 text-slate-400 hover:text-white text-lg transition-colors cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div
+                class="w-12 h-12 rounded-xl bg-brandCyan/10 border border-brandCyan/30 text-brandCyan flex items-center justify-center text-xl mb-5">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <h3 class="text-2xl font-extrabold text-white tracking-tight mb-2" data-i18n="modalTitle">Thanks!</h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6" data-i18n="modalDesc">
+                The form was submitted successfully.
+            </p>
+
+            <button id="modalOkBtn" type="button"
+                class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brandBlue to-brandCyan text-brandDark font-bold text-sm shadow-md hover:brightness-110 transition-all cursor-pointer text-center"
+                data-i18n="modalBtn">
+                OK
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                navHome: "Home",
+                navHardware: "Hardware",
+                navSoftware: "Software",
+                navMaintenance: "Maintenance",
+                navContact: "Contact",
+                navGetStarted: "Get Started",
+                heroBadge: "Next-Generation Engineering Platform",
+                heroTitlePrefix: "Accelerated Hardware Synthesis:",
+                heroTitleHighlight: "From Silicon to Screen.",
+                heroSubtitle: "TraceOn automates hardware design while instantly generating matching control interfaces. Turn specs into functional prototypes in minutes.",
+                heroPrimaryCta: "Deploy Now",
+                heroSecondaryCta: "Explore Platform",
+                metricCycle: "Cycle Reduction",
+                metricSynced: "HW-SW Co-design",
+                metricFriction: "Manual Parsing",
+                heroImageCard: "Automated Hardware & Firmware Co-Synthesis",
+                hwSubhead: "Design Acceleration",
+                hwTitle: "User-Friendly Hardware Design",
+                hwDesc: "Eliminate tedious datasheet review. TraceOn delivers verified reference architectures, automated pin allocation, and instant layout guidelines to streamline hardware prototyping.",
+                hwCard1Title: "Smart Specification Caching",
+                hwCard1Desc: "Access pre-indexed component specifications instantly, allowing rapid circuit synthesis without manual lookup delays.",
+                hwCard2Title: "Standard Reference Blueprints",
+                hwCard2Desc: "Deploy battle-tested schematics and routing guides tailored to meet target power, signal integrity, and thermal standards.",
+                hwCard3Title: "Automated Rule Verification",
+                hwCard3Desc: "Real-time electrical validation catches pin conflicts, voltage mismatches, and layout anomalies before manufacturing.",
+                swSubhead: "Interactive Interface Design",
+                swTitle: "Visual Control Interface",
+                swDesc: "Bypass repetitive frontend setup. TraceOn generates clean, customizable Web and Mobile control interfaces paired directly to your hardware layout.",
+                swFeature1Title: "Drag-and-Drop Layout Editor",
+                swFeature1Desc: "Customize telemetry dashboards, toggles, and charts visually. Components connect directly to device registers.",
+                swFeature2Title: "Automated Driver Synthesis",
+                swFeature2Desc: "Instantly compile ready-to-run embedded firmware and client libraries matched to your chosen interface pins.",
+                maintSubhead: "Ecosystem Synchronization",
+                maintTitle: "Live Design Intelligence via MCP",
+                maintDesc: "Stay ahead of supply chain volatility. TraceOn uses Model Context Protocol (MCP) servers to continuously refresh component pricing, availability, and design recommendations.",
+                maintCol1Title: "Live Component Tracking",
+                maintCol1Desc: "Synchronize directly with global inventory channels to monitor stock, lifecycle status, and price revisions.",
+                maintCol2Title: "Up-to-Date Guidelines",
+                maintCol2Desc: "Absorb manufacturer revisions and errata automatically, keeping reference blueprints aligned with latest silicon data.",
+                maintCol3Title: "Flexible Custom Connectors",
+                maintCol3Desc: "Connect private parts libraries and custom design rules directly to your workspace using open protocol connectors.",
+                contactBadge: "Get In Touch",
+                contactTitle: "Build Your Blueprint",
+                contactDesc: "Share your project requirements to review TraceOn hardware guides and customized control software.",
+                formNameLabel: "Full Name",
+                formEmailLabel: "Work Email",
+                formReqLabel: "Hardware & Interface Requirements",
+                formSubmit: "Submit Requirements for Review",
+                formSecurityNote: "Encrypted data transmission. Confidentiality strictly enforced.",
+                modalTitle: "Thanks!",
+                modalDesc: "The form was submitted successfully.",
+                modalBtn: "OK"
+            },
+            kr: {
+                navHome: "홈",
+                navHardware: "하드웨어 설계",
+                navSoftware: "소프트웨어 생성",
+                navMaintenance: "동적 유지관리",
+                navContact: "도입 문의",
+                navGetStarted: "시작하기",
+                heroBadge: "차세대 엔지니어링 플랫폼",
+                heroTitlePrefix: "하드웨어 합성의 가속화:",
+                heroTitleHighlight: "실리콘에서 화면까지.",
+                heroSubtitle: "TraceOn은 하드웨어 설계를 자동화하고 그에 맞춘 제어 인터페이스를 즉시 생성합니다. 사양 정의부터 동작 가능한 프로토타입까지 수 분 만에 완성합니다.",
+                heroPrimaryCta: "지금 시작하기",
+                heroSecondaryCta: "플랫폼 둘러보기",
+                metricCycle: "개발 주기 단축",
+                metricSynced: "하드웨어-소프트웨어 동기화",
+                metricFriction: "수동 데이터시트 분석 배제",
+                heroImageCard: "자동화된 하드웨어 및 펌웨어 통합 생성",
+                hwSubhead: "설계 가속화",
+                hwTitle: "사용자 친화적 하드웨어 설계",
+                hwDesc: "수작업 데이터시트 분석을 없앱니다. 검증된 표준 참조 아키텍처와 최적화 가이드라인을 제공하여 하드웨어 프로토타이핑을 직관적으로 완성합니다.",
+                hwCard1Title: "규격 데이터 스마트 캐싱",
+                hwCard1Desc: "부품 스펙을 사전 인덱싱하여 지연 시간 없이 필요한 회로 정보를 즉시 도출합니다.",
+                hwCard2Title: "표준 참조 아키텍처",
+                hwCard2Desc: "전력, 노이즈, 신호 무결성을 만족하도록 사전 검증된 턴키 표준 회로 가이드를 제공합니다.",
+                hwCard3Title: "자동 규칙 검증",
+                hwCard3Desc: "제작 전 핀 충돌, 전압 불일치 및 배선 오류를 실시간 검출하여 설계 위험을 차단합니다.",
+                swSubhead: "상호작용 인터페이스 설계",
+                swTitle: "시각적 제어 인터페이스",
+                swDesc: "반복적인 프론트엔드 작업 없이, 하드웨어 규격에 맞춘 모바일/웹 제어 소프트웨어를 드래그 앤 드롭 방식으로 손쉽게 편집합니다.",
+                swFeature1Title: "드래그 앤 드롭 레이아웃 편집",
+                swFeature1Desc: "대시보드 위젯, 토글, 차트를 시각적으로 배치하면 하드웨어 제어점과 자동 연동됩니다.",
+                swFeature2Title: "드라이버 코드 자동 합성",
+                swFeature2Desc: "선택된 MCU 및 통신 포트에 맞춤화된 임베디드 펌웨어 및 제어 코드를 즉시 빌드합니다.",
+                maintSubhead: "생태계 실시간 연동",
+                maintTitle: "MCP 기반 실시간 설계 지능",
+                maintDesc: "MCP(Model Context Protocol)를 통해 글로벌 부품 공급망과 실시간 연동되어 최신 부품 매핑과 갱신된 설계 가이드라인을 제공합니다.",
+                maintCol1Title: "실시간 부품 수급 매핑",
+                maintCol1Desc: "글로벌 재고 및 가격 변동을 실시간 감지하여 핀 호환 대체 소자를 즉시 제안합니다.",
+                maintCol2Title: "최신 가이드라인 자동 반영",
+                maintCol2Desc: "제조사 칩셋 에라타와 기술 문서를 지속 분석하여 기존 설계 권장 사항을 최신 상태로 유지합니다.",
+                maintCol3Title: "개방형 사내 자산 확장",
+                maintCol3Desc: "표준 커넥터를 활용해 기업 고유 부품 라이브러리와 규칙을 작업 영역에 유연하게 통합합니다.",
+                contactBadge: "도입 문의",
+                contactTitle: "설계 청사진 구축",
+                contactDesc: "프로젝트 요구사항을 남겨주시면 자동 생성된 설계 가이드와 제어 소프트웨어를 확인하실 수 있습니다.",
+                formNameLabel: "성명",
+                formEmailLabel: "회사 이메일",
+                formReqLabel: "하드웨어 및 제어 인터페이스 요구사항",
+                formSubmit: "검토 요청 제출",
+                formSecurityNote: "암호화 전송 및 엄격한 보안 프로토콜 적용.",
+                modalTitle: "감사합니다!",
+                modalDesc: "문의 내용이 성공적으로 제출되었습니다.",
+                modalBtn: "확인"
+            }
+        };
+
+        let currentLang = 'en';
+        const langToggleBtn = document.getElementById('langToggle');
+        const langDisplay = document.getElementById('langDisplay');
+
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'kr' : 'en';
+            langDisplay.textContent = currentLang === 'en' ? 'KR' : 'EN';
+
+            document.querySelectorAll('[data-i18n]').forEach((element) => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    element.textContent = translations[currentLang][key];
+                }
+            });
+        });
+
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitBtnText = document.getElementById('submitBtnText');
+        const submitSpinner = document.getElementById('submitSpinner');
+        const successModal = document.getElementById('successModal');
+        const modalBox = document.getElementById('modalBox');
+        const modalOkBtn = document.getElementById('modalOkBtn');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+        function openModal() {
+            successModal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            successModal.classList.add('hidden');
+        }
+
+        modalOkBtn.addEventListener('click', closeModal);
+        modalCloseBtn.addEventListener('click', closeModal);
+
+        successModal.addEventListener('click', (e) => {
+            if (!modalBox.contains(e.target)) {
+                closeModal();
+            }
+        });
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            submitBtn.disabled = true;
+            submitSpinner.classList.remove('hidden');
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    contactForm.reset();
+                    openModal();
+                } else {
+                    alert('Submission failed. Please check your inputs or try again later.');
+                }
+            } catch (error) {
+                alert('Network error occurred. Please try again.');
+            } finally {
+                submitBtn.disabled = false;
+                submitSpinner.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
+
 </html>
