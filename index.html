@@ -452,7 +452,7 @@
             </div>
 
             <p class="text-xs text-slate-500">
-                &copy; 2025-2026 TraceOn Inc. All rights reserved.
+                &copy; 2025-<span id="current-year">2026</span> TraceOn Inc. All rights reserved.
             </p>
         </div>
     </footer>
@@ -599,6 +599,8 @@
         let currentLang = 'en';
         const langToggleBtn = document.getElementById('langToggle');
         const langDisplay = document.getElementById('langDisplay');
+        
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
         langToggleBtn.addEventListener('click', () => {
             currentLang = currentLang === 'en' ? 'kr' : 'en';
